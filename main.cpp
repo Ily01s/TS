@@ -154,12 +154,25 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
         glEnd();
 
-        //dessin sphere
+        //dessin Point
         // Obtenir les coordonnées du sommet 1 du cube
             const Triangle& triangle1 = cube.getFaces()[0].first;
-            Vertex v1(triangle1.getVertex1().getX(), triangle1.getVertex1().getY(), triangle1.getVertex1().getZ(),1);
+            /*Vertex v1(triangle1.getVertex1().getX(), triangle1.getVertex1().getY(), triangle1.getVertex1().getZ(),1);
             Sphere mySphere(v1, 0.5f);
-            mySphere.drawSphere(mySphere);
+            mySphere.drawSphere(0.5f, 20, 20);*/
+            glDisable(GL_DEPTH_TEST);
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glEnable(GL_POINT_SMOOTH);
+            glPointSize(20.0f);
+            glBegin(GL_POINTS);
+
+            // Dessiner un point à la position (x, y, z)
+            glVertex3f(1.0f, 1.0f, 1.0f);
+
+            // Fin du dessin des points
+            glEnd();
+            glEnable(GL_DEPTH_TEST);
+
 
 
         SwapBuffers(hDC);// Échanger les tampons de l'affichage

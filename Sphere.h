@@ -1,7 +1,8 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include <gl/gl.h>
+#include <GL/gl.h>
+#include <cmath>
 #include "Vertex.h"
 
 class Sphere
@@ -11,7 +12,7 @@ class Sphere
         virtual ~Sphere();
         void setPosition(const Vertex& newCenter);
         Vertex getPosition() const;
-        void drawSphere(const Sphere& sphere);
+        void drawSphere(double r, int lats, int longs);
 
     protected:
 

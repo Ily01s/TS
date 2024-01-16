@@ -3,7 +3,7 @@
 	<windows.h>
 	<gl/gl.h>
 
-1705442094 source:d:\image\ts\main.cpp
+1705443939 source:d:\image\ts\main.cpp
 	<windows.h>
 	<gl/gl.h>
 	<gl/glu.h>
@@ -79,10 +79,11 @@
 	"Triangle.h"
 	"Vertex.h"
 
-1705442195 source:d:\image\ts\sphere.cpp
+1705443980 source:d:\image\ts\sphere.cpp
 	"Sphere.h"
 
-1705442141 d:\image\ts\sphere.h
-	<gl/gl.h>
+1705443960 d:\image\ts\sphere.h
+	<GL/gl.h>
+	<cmath>
 	"Vertex.h"
 
