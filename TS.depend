@@ -1,0 +1,88 @@
+# depslib dependency file v1.0
+1584205422 source:d:\image\ts\main.c
+	<windows.h>
+	<gl/gl.h>
+
+1705442094 source:d:\image\ts\main.cpp
+	<windows.h>
+	<gl/gl.h>
+	<gl/glu.h>
+	"Cube.h"
+	"Sphere.h"
+	"Mesh.h"
+	"Simulation.h"
+	"Trajectoire.h"
+	<iostream>
+
+1705419849 source:d:\image\ts\graph.cpp
+	"Graph.h"
+
+1705066306 d:\image\ts\graph.h
+	<unordered_map>
+	<vector>
+	"Vertex.h"
+
+1705060713 d:\image\ts\vertex.h
+
+1705419860 source:d:\image\ts\mesh.cpp
+	"Mesh.h"
+
+1705094679 d:\image\ts\mesh.h
+	<vector>
+	"Triangle.h"
+	"Graph.h"
+	<cmath>
+
+1705060713 d:\image\ts\triangle.h
+	"Vertex.h"
+
+1705419865 source:d:\image\ts\simulation.cpp
+	"Simulation.h"
+	<iostream>
+
+1705094679 d:\image\ts\simulation.h
+	"Mesh.h"
+	"Trajectoire.h"
+
+1705420620 d:\image\ts\trajectoire.h
+	<vector>
+	"Vertex.h"
+	"Mesh.h"
+	<unordered_map>
+	<algorithm>
+
+1705419870 source:d:\image\ts\triangle.cpp
+	"Triangle.h"
+
+1705419875 source:d:\image\ts\vertex.cpp
+	"Vertex.h"
+
+1705420626 source:d:\image\ts\trajectoire.cpp
+	"Trajectoire.h"
+	<iostream>
+	<cmath>
+	<queue>
+	<limits>
+
+1705423418 source:d:\image\ts\src\cube.cpp
+	"Cube.h"
+
+1705423418 d:\image\ts\include\cube.h
+
+1705438066 source:d:\image\ts\cube.cpp
+	"Cube.h"
+	<cmath>
+
+1705437735 d:\image\ts\cube.h
+	<array>
+	<vector>
+	"Triangle.h"
+	"Vertex.h"
+
+1705442195 source:d:\image\ts\sphere.cpp
+	"Sphere.h"
+
+1705442141 d:\image\ts\sphere.h
+	<gl/gl.h>
+	"Vertex.h"
+
