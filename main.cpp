@@ -205,23 +205,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
         glEnd();
 
-        //dessin Point
-        // Obtenir les coordonnées du sommet 1 du cube
-            /*const Triangle& triangle1 = cube.getFaces()[0].first;
-            Vertex v1(triangle1.getVertex1().getX(), triangle1.getVertex1().getY(), triangle1.getVertex1().getZ(),1);
-            Sphere mySphere(v1, 0.5f);
-            mySphere.drawSphere(0.5f, 20, 20);
-            glDisable(GL_DEPTH_TEST);
-            glColor3f(1.0f, 0.0f, 0.0f);
-            glEnable(GL_POINT_SMOOTH);
-            glPointSize(20.0f);
-            glBegin(GL_POINTS);
-            // Dessiner un point à la position (x, y, z)
-            glVertex3f(v.getX(), v.getY(), v.getZ());
-            // Fin du dessin des points
-            glEnd();
-            glEnable(GL_DEPTH_TEST);*/
-
+            //dessin Point
             glDisable(GL_DEPTH_TEST);
             glColor3f(1.0f, 0.0f, 0.0f);
             glEnable(GL_POINT_SMOOTH);
@@ -242,42 +226,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     return msg.wParam;
 }
 
-
-/*int main() {
-
-    // Création d'un maillage simple pour le test
-    Mesh mesh;
-    mesh.addTriangle(Triangle(Vertex(0.0f, 0.0f, 0.0f, 1),
-                              Vertex(1.0f, 0.0f, 0.0f, 2),
-                              Vertex(0.0f, 1.0f, 0.0f, 3)));
-    mesh.addTriangle(Triangle(Vertex(0.0f, 1.0f, 0.0f, 3),
-                              Vertex(1.0f, 0.0f, 0.0f, 2),
-                              Vertex(1.0f, 1.0f, 0.0f, 4)));
-
-    // Construction du graphe basé sur le maillage
-    mesh.buildGraph();
-
-    // Initialisation d'une simulation
-    Simulation simulation;
-    simulation.initialize();
-
-    // Définir les identifiants des sommets de départ et d'arrivée pour la trajectoire
-    int startVertexId = 1; // Supposons que 1 est l'ID de votre sommet de départ
-    int endVertexId = 4;   // Supposons que 4 est l'ID de votre sommet d'arrivée
-
-    // Exécution de l'algorithme de Dijkstra pour trouver la trajectoire
-    simulation.runAlgorithm();
-
-    // Affichage de la trajectoire calculée
-    simulation.updateDisplay();
-
-    // Affichage de la longueur totale de la trajectoire
-    std::cout << "Longueur totale de la trajectoire: "
-              << simulation.getTrajectoire().calculateLength() << " unités" << std::endl;
-
-    return 0;
-    std::cin.get();
-}*/
 
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
