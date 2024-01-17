@@ -42,6 +42,7 @@ void Mesh::buildGraph() {
         graph.addEdge(v2, v3, weight_v2_v3);
         graph.addEdge(v3, v1, weight_v3_v1);
     }
+    //std::cout << "graphe bien construit!! ";
 }
 
 

@@ -3,7 +3,8 @@
 #include <vector>
 #include "Triangle.h"
 #include "Graph.h"
-#include <cmath> 
+#include <cmath>
+#include <iostream>
 
 class Mesh {
 public:
@@ -15,10 +16,10 @@ public:
     void addTriangle(const Triangle& triangle);
     const std::vector<Triangle>& getTriangles() const;
     Vertex getVertexById(int id) const;
-    
+
 private:
     std::vector<Triangle> triangles;
-    Graph graph;  
+    Graph graph;
     std::unordered_map<int, Vertex> vertices;
     /*std::unordered_map<int, AdjList> graph;*/
 };

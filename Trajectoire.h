@@ -14,7 +14,7 @@ public:
     void addPoint(const Vertex& point);
     float calculateLength() const;
     void visualize() const;
-
+    std::vector<Vertex> getPoints();
     void generateTrajectoryDijkstra(const Mesh& mesh, int startVertexId, int endVertexId);
 
 

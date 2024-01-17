@@ -15,11 +15,18 @@
 LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 void EnableOpenGL(HWND hwnd, HDC*, HGLRC*);
 void DisableOpenGL(HWND, HDC, HGLRC);
+int startVertexId, endVertexId;
 
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-     WNDCLASSEX wcex;
+
+    std::cout << "Enter the start vertex ID: ";
+    std::cin >> startVertexId;
+    std::cout << "Enter the end vertex ID: ";
+    std::cin >> endVertexId;
+
+    WNDCLASSEX wcex;
     HWND hwnd;
     HDC hDC;
     HGLRC hRC;
@@ -68,13 +75,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     Mesh mesh;
    // Création d'un cube
     Cube cube;
-    cube.buildCube(2.5f);  // Créer un cube d'une longueur de côté 1.0
+    cube.buildCube(mesh,2.5f);  // Créer un cube d'une longueur de côté 1.0
+
+    mesh.buildGraph();
 
     // Initialisation d'une simulation
     Simulation simulation;
     simulation.initialize();
 
-    // ... [Votre code actuel pour la simulation] ...
+   // Création d'une instance de Trajectoire
+    Trajectoire traj;
+
+    // Génération de la trajectoire en utilisant l'algorithme de Dijkstra
+     traj.generateTrajectoryDijkstra(mesh, startVertexId, endVertexId);
 
     // Boucle principale pour la fenêtre OpenGL
     while (!bQuit) {

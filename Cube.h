@@ -6,6 +6,7 @@
 #include <vector>
 #include "Triangle.h"
 #include "Vertex.h"
+#include "Mesh.h"
 
 class Cube
 {
@@ -14,13 +15,13 @@ class Cube
         virtual ~Cube();
         // Définition d'une paire de triangles pour représenter une face
             using Face = std::pair<Triangle, Triangle>;
-    void buildCube(float sideLength);  // Méthode pour construire le cube
+    void buildCube(Mesh& mesh,float sideLength);  // Méthode pour construire le cube
     const std::vector<Face>& getFaces() const;
 
     protected:
 
     private:
-
+        Mesh mesh;
         std::vector<Face> faces;
 
 };

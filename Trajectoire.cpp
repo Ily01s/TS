@@ -17,6 +17,10 @@ void Trajectoire::addPoint(const Vertex& point) {
     points.push_back(point);
 }
 
+std::vector<Vertex> Trajectoire::getPoints(){
+    return points;
+}
+
 float Trajectoire::calculateLength() const {
     float length = 0.0f;
     for (size_t i = 1; i < points.size(); ++i) {
@@ -100,4 +104,7 @@ void Trajectoire::generateTrajectoryDijkstra(const Mesh& mesh, int startVertexId
         Vertex v = mesh.getVertexById(vertexId);
         addPoint(v);
     }
+
+    std::cout << "trajectoire!! ";
 }
+
