@@ -57,6 +57,7 @@ std::vector<int> dijkstra(const Graph& graph, int startVertex, int endVertex) {
     std::unordered_map<int, float> distances;
     std::unordered_map<int, int> previous;
 
+
     for (const auto& pair : graph.getAdjacencyList()) {
         distances[pair.first] = std::numeric_limits<float>::infinity();
     }
@@ -86,13 +87,25 @@ std::vector<int> dijkstra(const Graph& graph, int startVertex, int endVertex) {
     }
 
     std::vector<int> path;
+if (previous.find(endVertex) != previous.end()) { // Vérifie si un chemin existe
     for (int at = endVertex; at != startVertex; at = previous[at]) {
+        // Vérifie si 'at' est dans 'previous' avant d'accéder à 'previous[at]'
+        if (previous.find(at) == previous.end()) {
+            throw std::runtime_error("Chemin non trouvé");
+        }
         path.push_back(at);
     }
     path.push_back(startVertex);
     std::reverse(path.begin(), path.end());
+} else {
+    throw std::runtime_error("Aucun chemin de startVertex à endVertex");
+}
 
-    return path;
+    for(int i:path){
+         std::cout << " Le sommet " << i  << std::endl;
+
+    }
+return path;
 }
 
 void Trajectoire::generateTrajectoryDijkstra(const Mesh& mesh, int startVertexId, int endVertexId) {

@@ -11,13 +11,21 @@ void Cube::buildCube(Mesh& mesh,float sideLength) {
 
     // Définir les 8 sommets du cube
     Vertex v1(-halfSide, -halfSide, halfSide,1);   // Sommet 1
+    mesh.addVertex(v1);
     Vertex v2(halfSide, -halfSide, halfSide,2);    // Sommet 2
+    mesh.addVertex(v2);
     Vertex v3(halfSide, halfSide, halfSide,3);     // Sommet 3
+    mesh.addVertex(v3);
     Vertex v4(-halfSide, halfSide, halfSide,4);    // Sommet 4
+    mesh.addVertex(v4);
     Vertex v5(-halfSide, -halfSide, -halfSide,5);  // Sommet 5
+    mesh.addVertex(v5);
     Vertex v6(halfSide, -halfSide, -halfSide,6);   // Sommet 6
+    mesh.addVertex(v6);
     Vertex v7(halfSide, halfSide, -halfSide,7);    // Sommet 7
+    mesh.addVertex(v7);
     Vertex v8(-halfSide, halfSide, -halfSide,8);   // Sommet 8
+    mesh.addVertex(v8);
 
     // Construire les 12 triangles (2 par face)
     faces.push_back({Triangle(v1, v2, v3), Triangle(v3, v4, v1)}); // Face avant

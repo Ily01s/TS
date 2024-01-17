@@ -3,7 +3,7 @@
 	<windows.h>
 	<gl/gl.h>
 
-1705496670 source:d:\image\ts\main.cpp
+1705519213 source:d:\image\ts\main.cpp
 	<windows.h>
 	<gl/gl.h>
 	<gl/glu.h>
@@ -13,21 +13,23 @@
 	"Simulation.h"
 	"Trajectoire.h"
 	<iostream>
+	<vector>
 
-1705419849 source:d:\image\ts\graph.cpp
+1705509343 source:d:\image\ts\graph.cpp
 	"Graph.h"
+	<algorithm>
 
 1705066306 d:\image\ts\graph.h
 	<unordered_map>
 	<vector>
 	"Vertex.h"
 
-1705060713 d:\image\ts\vertex.h
+1705519032 d:\image\ts\vertex.h
 
-1705496620 source:d:\image\ts\mesh.cpp
+1705509535 source:d:\image\ts\mesh.cpp
 	"Mesh.h"
 
-1705496396 d:\image\ts\mesh.h
+1705508289 d:\image\ts\mesh.h
 	<vector>
 	"Triangle.h"
 	"Graph.h"
@@ -58,7 +60,7 @@
 1705419875 source:d:\image\ts\vertex.cpp
 	"Vertex.h"
 
-1705496978 source:d:\image\ts\trajectoire.cpp
+1705510574 source:d:\image\ts\trajectoire.cpp
 	"Trajectoire.h"
 	<iostream>
 	<cmath>
@@ -70,7 +72,7 @@
 
 1705423418 d:\image\ts\include\cube.h
 
-1705495692 source:d:\image\ts\cube.cpp
+1705505956 source:d:\image\ts\cube.cpp
 	"Cube.h"
 	<cmath>
 

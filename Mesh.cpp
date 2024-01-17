@@ -1,6 +1,7 @@
 // src/Mesh.cpp
 #include "Mesh.h"
 
+
 Mesh::Mesh() {
     // Initialisation du maillage, si nécessaire
 }
@@ -12,6 +13,11 @@ Mesh::~Mesh() {
 void Mesh::addTriangle(const Triangle& triangle) {
     triangles.push_back(triangle);
 }
+
+void Mesh::addVertex(const Vertex& v) {
+     vertices.push_back(v);
+}
+
 
 const std::vector<Triangle>& Mesh::getTriangles() const {
     return triangles;
@@ -45,18 +51,31 @@ void Mesh::buildGraph() {
     //std::cout << "graphe bien construit!! ";
 }
 
+bool Mesh::verifyGraph() {
+    const auto& adjList = graph.getAdjacencyList();
+    for (const auto& pair : adjList) {
+        const int vertexId = pair.first;
+        const auto& neighbors = pair.second;
+        if (neighbors.size() <3) {
+            std::cout << "Erreur: Le sommet " << vertexId << " a " << neighbors.size() << " voisins (3 attendus)." << std::endl;
+            return false;
+        }
+    }
+    return true;
+}
+
+
 
 /*const Graph& Mesh::getGraph() const {
     return graph;
 }*/
 
 Vertex Mesh::getVertexById(int id) const {
-    auto it = vertices.find(id);
-    if (it != vertices.end()) {
-        return it->second;
-    }
-
-
+  for (auto& vertex : vertices) {
+            if (vertex.getId() == id) {
+                return vertex;
+            }
+        }
     return Vertex(0, 0, 0,0);
 }
 

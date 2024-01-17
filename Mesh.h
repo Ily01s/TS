@@ -14,12 +14,14 @@ public:
     void buildGraph();
      const Graph& getGraph() const;
     void addTriangle(const Triangle& triangle);
+    void addVertex(const Vertex& v);
     const std::vector<Triangle>& getTriangles() const;
     Vertex getVertexById(int id) const;
+    bool verifyGraph();
 
 private:
     std::vector<Triangle> triangles;
     Graph graph;
-    std::unordered_map<int, Vertex> vertices;
+    std::vector<Vertex> vertices;
     /*std::unordered_map<int, AdjList> graph;*/
 };

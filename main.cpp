@@ -9,14 +9,18 @@
 #include "Trajectoire.h"
 
 #include <iostream>
-
+#include <vector>
 
 // Prototypes des fonctions pour la gestion d'OpenGL
 LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 void EnableOpenGL(HWND hwnd, HDC*, HGLRC*);
 void DisableOpenGL(HWND, HDC, HGLRC);
-int startVertexId, endVertexId;
 
+// Variables globales pour l'animation
+int startVertexId, endVertexId;
+float animationSpeed = 0.1f;
+int currentPointIndex = 0;
+float progress = 0.0f;
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -78,6 +82,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     cube.buildCube(mesh,2.5f);  // Créer un cube d'une longueur de côté 1.0
 
     mesh.buildGraph();
+    mesh.verifyGraph();
 
     // Initialisation d'une simulation
     Simulation simulation;
@@ -87,7 +92,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     Trajectoire traj;
 
     // Génération de la trajectoire en utilisant l'algorithme de Dijkstra
-     traj.generateTrajectoryDijkstra(mesh, startVertexId, endVertexId);
+    traj.generateTrajectoryDijkstra(mesh, startVertexId, endVertexId);
+
+    traj.visualize();
+
+    Vertex v= mesh.getVertexById(startVertexId);
+
+    //liste des point a parcourir
+    std::vector<Vertex> p;
+    p=traj.getPoints();
+
+
+    DWORD lastTime = GetTickCount();  //compteur de temps
+
 
     // Boucle principale pour la fenêtre OpenGL
     while (!bQuit) {
@@ -114,6 +131,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(3.0, 3.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
+
+        if (currentPointIndex < p.size() - 1) {
+            DWORD currentTime = GetTickCount();
+            float timeDelta = (float)(currentTime - lastTime) / 1000.0f; // Temps écoulé en secondes
+            lastTime = currentTime;
+
+            Vertex& currentPoint = p[currentPointIndex];
+            Vertex& nextPoint = p[currentPointIndex + 1];
+
+            progress += timeDelta * animationSpeed;
+            if (progress >= 1.0f) {
+                currentPointIndex++;
+                progress = 0.0f;
+            } else {
+                v.setX(currentPoint.getX() + (nextPoint.getX() - currentPoint.getX()) * progress);
+                v.setY(currentPoint.getY() + (nextPoint.getY() - currentPoint.getY()) * progress);
+                v.setZ(currentPoint.getZ() + (nextPoint.getZ() - currentPoint.getZ()) * progress);
+            }
+        }
+
 
         // Dessiner le cube
         //glColor3f(0.0f, 0.0f, 1.0f);
@@ -169,24 +207,29 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
         //dessin Point
         // Obtenir les coordonnées du sommet 1 du cube
-            const Triangle& triangle1 = cube.getFaces()[0].first;
-            /*Vertex v1(triangle1.getVertex1().getX(), triangle1.getVertex1().getY(), triangle1.getVertex1().getZ(),1);
+            /*const Triangle& triangle1 = cube.getFaces()[0].first;
+            Vertex v1(triangle1.getVertex1().getX(), triangle1.getVertex1().getY(), triangle1.getVertex1().getZ(),1);
             Sphere mySphere(v1, 0.5f);
-            mySphere.drawSphere(0.5f, 20, 20);*/
+            mySphere.drawSphere(0.5f, 20, 20);
             glDisable(GL_DEPTH_TEST);
             glColor3f(1.0f, 0.0f, 0.0f);
             glEnable(GL_POINT_SMOOTH);
             glPointSize(20.0f);
             glBegin(GL_POINTS);
-
             // Dessiner un point à la position (x, y, z)
-            glVertex3f(1.0f, 1.0f, 1.0f);
-
+            glVertex3f(v.getX(), v.getY(), v.getZ());
             // Fin du dessin des points
             glEnd();
+            glEnable(GL_DEPTH_TEST);*/
+
+            glDisable(GL_DEPTH_TEST);
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glEnable(GL_POINT_SMOOTH);
+            glPointSize(20.0f);
+            glBegin(GL_POINTS);
+            glVertex3f(v.getX(), v.getY(), v.getZ());
+            glEnd();
             glEnable(GL_DEPTH_TEST);
-
-
 
         SwapBuffers(hDC);// Échanger les tampons de l'affichage
         }

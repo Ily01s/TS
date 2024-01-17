@@ -10,6 +10,10 @@ public:
     float getZ() const;
     int getId() const;
 
+    void setX(float newX) { x = newX; }
+    void setY(float newY) { y = newY; }
+    void setZ(float newZ) { z = newZ; }
+
 private:
     float x, y, z;
     int id;  // Identifiant unique pour le vertex
